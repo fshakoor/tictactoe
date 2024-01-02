@@ -1,54 +1,74 @@
-// TODO: store the gameboard as an array inside of a Gameboard object
-
-let curPlayer = 'X';
-
 const Gameboard = {
     gameBoard: [
-        ['','',''],
-        ['','',''],
-        ['','','']
-    ]
-}
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+    ],
 
-function checkWin() {
-    if (Gameboard.gameBoard[0][0] == Gameboard.gameBoard[0][1] && Gameboard.gameBoard[0][0] == Gameboard.gameBoard[0][2] && Gameboard.gameBoard[0][0] !== '') {
-        console.log('W')
-    }
-    if (Gameboard.gameBoard[1][0] == Gameboard.gameBoard[1][1] && Gameboard.gameBoard[1][0] == Gameboard.gameBoard[1][2] && Gameboard.gameBoard[1][0] !== '') {
-        console.log('W')
-    }
-    if (Gameboard.gameBoard[2][0] == Gameboard.gameBoard[2][1] && Gameboard.gameBoard[2][0] == Gameboard.gameBoard[2][2] && Gameboard.gameBoard[2][0] !== '') {
-        console.log('W')
-    }
-    if (Gameboard.gameBoard[0][0] == Gameboard.gameBoard[1][0] && Gameboard.gameBoard[0][0] == Gameboard.gameBoard[2][0] && Gameboard.gameBoard[0][0] !== '') {
-        console.log('W')
-    }
-    if (Gameboard.gameBoard[0][1] == Gameboard.gameBoard[1][1] && Gameboard.gameBoard[0][1] == Gameboard.gameBoard[2][1] && Gameboard.gameBoard[0][1] !== '') {
-        console.log('W')
-    }
-    if (Gameboard.gameBoard[0][2] == Gameboard.gameBoard[1][2] && Gameboard.gameBoard[0][2] == Gameboard.gameBoard[2][2] && Gameboard.gameBoard[0][2] !== '') {
-        console.log('W')
-    }
-    if (Gameboard.gameBoard[0][0] == Gameboard.gameBoard[1][1] && Gameboard.gameBoard[0][0] == Gameboard.gameBoard[2][2] && Gameboard.gameBoard[0][0] !== '') {
-        console.log('W')
-    }
-    if (Gameboard.gameBoard[0][2] == Gameboard.gameBoard[1][1] && Gameboard.gameBoard[0][2] == Gameboard.gameBoard[2][0] && Gameboard.gameBoard[0][2] !== '') {
-        console.log('W')
-    }
-}
+    curPlayer: 'X',
 
-let topLeft = document.querySelector('.upper-left')
-let topMid = document.querySelector('.upper-mid')
-let topRight = document.querySelector('.upper-right')
+    topLeft: document.querySelector('.upper-left'),
+    topMid: document.querySelector('.upper-mid'),
+    topRight: document.querySelector('.upper-right'),
+    midLeft: document.querySelector('.mid-left'),
+    mid: document.querySelector('.middle'),
+    midRight: document.querySelector('.mid-right'),
+    bottomLeft: document.querySelector('.bottom-left'),
+    bottomMid: document.querySelector('.bottom-mid'),
+    bottomRight: document.querySelector('.bottom-right'),
+    
+    init: function() {
+        this.topLeft.addEventListener("click", this.createClickListener(0, 0, this.topLeft));
+        this.topMid.addEventListener("click", this.createClickListener(0, 1, this.topMid));
+        this.topRight.addEventListener("click", this.createClickListener(0, 2, this.topRight));
+        this.midLeft.addEventListener("click", this.createClickListener(1, 0, this.midLeft));
+        this.mid.addEventListener("click", this.createClickListener(1, 1, this.mid));
+        this.midRight.addEventListener("click", this.createClickListener(1, 2, this.midRight));
+        this.bottomLeft.addEventListener("click", this.createClickListener(2, 0, this.bottomLeft));
+        this.bottomMid.addEventListener("click", this.createClickListener(2, 1, this.bottomMid));
+        this.bottomRight.addEventListener("click", this.createClickListener(2, 2, this.bottomRight));
+    },
 
-let midLeft = document.querySelector('.mid-left')
-let mid = document.querySelector('.middle')
-let midRight = document.querySelector('.mid-right')
+    createClickListener: function(row, col, element) {
+        return () => {
+            if (this.gameBoard[row][col] === '') {
+                this.gameBoard[row][col] = this.curPlayer;
+                element.innerHTML = this.curPlayer;
+                this.curPlayer = (this.curPlayer === 'X') ? 'O' : 'X';
+                this.checkWin();
+            }
+        };
+    },
 
-let bottomLeft = document.querySelector('.bottom-left')
-let bottomMid = document.querySelector('.bottom-mid')
-let bottomRight = document.querySelector('.bottom-right')
+    checkWin: function() {
+        if (Gameboard.gameBoard[0][0] == Gameboard.gameBoard[0][1] && Gameboard.gameBoard[0][0] == Gameboard.gameBoard[0][2] && Gameboard.gameBoard[0][0] !== '') {
+            console.log('W')
+        }
+        if (Gameboard.gameBoard[1][0] == Gameboard.gameBoard[1][1] && Gameboard.gameBoard[1][0] == Gameboard.gameBoard[1][2] && Gameboard.gameBoard[1][0] !== '') {
+            console.log('W')
+        }
+        if (Gameboard.gameBoard[2][0] == Gameboard.gameBoard[2][1] && Gameboard.gameBoard[2][0] == Gameboard.gameBoard[2][2] && Gameboard.gameBoard[2][0] !== '') {
+            console.log('W')
+        }
+        if (Gameboard.gameBoard[0][0] == Gameboard.gameBoard[1][0] && Gameboard.gameBoard[0][0] == Gameboard.gameBoard[2][0] && Gameboard.gameBoard[0][0] !== '') {
+            console.log('W')
+        }
+        if (Gameboard.gameBoard[0][1] == Gameboard.gameBoard[1][1] && Gameboard.gameBoard[0][1] == Gameboard.gameBoard[2][1] && Gameboard.gameBoard[0][1] !== '') {
+            console.log('W')
+        }
+        if (Gameboard.gameBoard[0][2] == Gameboard.gameBoard[1][2] && Gameboard.gameBoard[0][2] == Gameboard.gameBoard[2][2] && Gameboard.gameBoard[0][2] !== '') {
+            console.log('W')
+        }
+        if (Gameboard.gameBoard[0][0] == Gameboard.gameBoard[1][1] && Gameboard.gameBoard[0][0] == Gameboard.gameBoard[2][2] && Gameboard.gameBoard[0][0] !== '') {
+            console.log('W')
+        }
+        if (Gameboard.gameBoard[0][2] == Gameboard.gameBoard[1][1] && Gameboard.gameBoard[0][2] == Gameboard.gameBoard[2][0] && Gameboard.gameBoard[0][2] !== '') {
+            console.log('W')
+        }
+    }
+};
 
+Gameboard.init();
 
 let consoleCheck = document.querySelector('.check-console')
 consoleCheck.addEventListener("click", () => {
@@ -57,93 +77,7 @@ consoleCheck.addEventListener("click", () => {
     }
 })
 
-// PUT THESE IN FACTORY
-// TODO: check for win (3 in a row)
-topLeft.addEventListener("click", () => {
-    console.log('clicked.');
-    if (Gameboard.gameBoard[0][0] === '') {
-        Gameboard.gameBoard[0][0] = curPlayer;
-        topLeft.innerHTML = curPlayer;
-        (curPlayer === 'X') ? curPlayer = 'O' : curPlayer = 'X';
-        checkWin()
-    }
-});
-topMid.addEventListener("click", () => {
-    console.log('clicked.')
-    if (Gameboard.gameBoard[0][1] === '') {
-        Gameboard.gameBoard[0][1] = curPlayer;
-        topMid.innerHTML = curPlayer;
-        (curPlayer === 'X') ? curPlayer = 'O' : curPlayer = 'X';
-        checkWin()
-    }
-});
-topRight.addEventListener("click", () => {
-    console.log('clicked.')
-    if (Gameboard.gameBoard[0][2] === '') {
-        Gameboard.gameBoard[0][2] = curPlayer;
-        topRight.innerHTML = curPlayer;
-        (curPlayer === 'X') ? curPlayer = 'O' : curPlayer = 'X';
-        checkWin()
-    }
-});
-
-midLeft.addEventListener("click", () => {
-    console.log('clicked.')
-    if (Gameboard.gameBoard[1][0] === '') {
-        Gameboard.gameBoard[1][0] = curPlayer;
-        midLeft.innerHTML = curPlayer;
-        (curPlayer === 'X') ? curPlayer = 'O' : curPlayer = 'X';
-        checkWin()
-    }
-});
-mid.addEventListener("click", () => {
-    console.log('clicked.')
-    if (Gameboard.gameBoard[1][1] === '') {
-        Gameboard.gameBoard[1][1] = curPlayer;
-        mid.innerHTML = curPlayer;
-        (curPlayer === 'X') ? curPlayer = 'O' : curPlayer = 'X';
-        checkWin()
-    }
-});
-midRight.addEventListener("click", () => {
-    console.log('clicked.')
-    if (Gameboard.gameBoard[1][2] === '') {
-        Gameboard.gameBoard[1][2] = curPlayer;
-        midRight.innerHTML = curPlayer;
-        (curPlayer === 'X') ? curPlayer = 'O' : curPlayer = 'X';
-        checkWin()
-    }
-});
-
-bottomLeft.addEventListener("click", () => {
-    console.log('clicked.')
-    if (Gameboard.gameBoard[2][0] === '') {
-        Gameboard.gameBoard[2][0] = curPlayer;
-        bottomLeft.innerHTML = curPlayer;
-        (curPlayer === 'X') ? curPlayer = 'O' : curPlayer = 'X';
-        checkWin()
-    }
-});
-bottomMid.addEventListener("click", () => {
-    console.log('clicked.')
-    if (Gameboard.gameBoard[2][1] === '') {
-        Gameboard.gameBoard[2][1] = curPlayer;
-        bottomMid.innerHTML = curPlayer;
-        (curPlayer === 'X') ? curPlayer = 'O' : curPlayer = 'X';
-        checkWin()
-    }
-});
-bottomRight.addEventListener("click", () => {
-    console.log('clicked.')
-    if (Gameboard.gameBoard[2][2] === '') {
-        Gameboard.gameBoard[2][2] = curPlayer;
-        bottomRight.innerHTML = curPlayer;
-        (curPlayer === 'X') ? curPlayer = 'O' : curPlayer = 'X';
-        checkWin()
-    }
-});
-
-
+// TODO: check for draw
 
 // TODO: Try tucking as much as you can inside factories. If you only need a single 
 // instance of something (e.g. the gameboard, the displayController etc.) then 
