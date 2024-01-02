@@ -1,3 +1,23 @@
+const formControl = {}
+
+function updatePlayer2Options() {
+    const player1Choice = document.getElementById('player1Choice').value;
+    const player2Choice = document.getElementById('player2Choice');
+    
+    player2Choice.innerHTML = '';
+    player2Choice.add(new Option('X', 'X', player1Choice !== 'X'));
+    player2Choice.add(new Option('O', 'O', player1Choice !== 'O'));
+}
+
+function updatePlayer1Options() {
+    const player2Choice = document.getElementById('player2Choice').value;
+    const player1Choice = document.getElementById('player1Choice');
+    
+    player1Choice.innerHTML = '';
+    player1Choice.add(new Option('X', 'X', player2Choice !== 'X'));
+    player1Choice.add(new Option('O', 'O', player2Choice !== 'O'));
+}
+
 const Gameboard = {
     gameBoard: [
         ['', '', ''],
@@ -99,9 +119,22 @@ const Gameboard = {
 
 Gameboard.init();
 
-// TODO: Show who's move it is
+let form = document.getElementById("myform");
+let p1Name = document.getElementById("player1Name");
+let p2Name = document.getElementById("player2Name");
+let p1choice = document.getElementById("player1Choice");
+let p2choice = document.getElementById("player2Choice");
 
-// TODO: Styling
+function handle_form_submission()
+{
+  console.log(p1Name.value)
+  console.log(p1choice.value)
+  console.log(p2Name.value)
+  console.log(p2choice.value)
+  return false;
+}
+
+// TODO: Show who's move it is
 
 // TODO: Draw line on 3 in a row
 

@@ -10,7 +10,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700;800" rel="stylesheet">
 </head>
 <body>
-    <div class="display-text">Welcome to Tic-Tac-Toe. Click any square to begin!</div>
+    <div class="display">
+        <div class="display-text">Welcome to Tic-Tac-Toe. Enter your names and select X or O to begin!</div>
+        
+        <form id="myform" onsubmit="return handle_form_submission()">
+            <label>
+                Player 1: 
+                <input type="text" id="player1Name" required>
+                <select id="player1Choice" onchange="updatePlayer2Options()" required>
+                    <option value="X">X</option>
+                    <option value="O">O</option>
+                </select>
+            </label>
+            <br>
+            <label>
+                Player 2: 
+                <input type="text" id="player2Name" required>
+                <select id="player2Choice" onchange="updatePlayer1Options()" required>
+                    <option value="O">O</option>
+                    <option value="X">X</option>
+                </select>
+            </label>
+            <button class="submit" type="submit" id="submit">Begin</button>
+        </form>
+    </div>
+
     <div class="gameboard">
         <div class="upper-left row-one"></div>
         <div class="upper-mid row-one"></div>
@@ -24,7 +48,6 @@
         <div class="bottom-mid row-three"></div>
         <div class="bottom-right row-three"></div>
     </div>
-    
     <script src="app.js"></script>
 </body>
 </html>
