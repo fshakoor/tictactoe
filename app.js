@@ -35,6 +35,7 @@ const Gameboard = {
             if (this.gameBoard[row][col] === '') {
                 this.gameBoard[row][col] = this.curPlayer;
                 element.innerHTML = this.curPlayer;
+                element.style.cursor = 'default';
                 this.curPlayer = (this.curPlayer === 'X') ? 'O' : 'X';
                 this.checkWin();
             }

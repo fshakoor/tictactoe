@@ -1,27 +1,49 @@
+:root {
+    --primary-color: #111344;
+    --secondary-color: white;
+}
+
 html,body {
     height: 100vh;
     margin: 0;
     overflow: hidden;
-    font-size: 16px;
     font-family: 'Roboto', sans-serif;
-    background-color: black;
+    background-color: var(--primary-color);
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 35px;
 }
 
 .gameboard {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1px;
 }
 
 .gameboard div {
-    background-color: white;
-    width: 12vw;
-    height: 12vw;
+    width: 11vw;
+    height: 11vw;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: default;
+    color: var(--secondary-color);
+    font-size: 6vw;
+    cursor: pointer;
+}
+
+.upper-left, .upper-mid, .mid-left, .middle, .bottom-left, .bottom-mid {
+    border-right: 4px var(--secondary-color) solid;
+}
+
+.row-one, .row-two {
+    border-bottom: 4px var(--secondary-color) solid;
+}
+
+.display-text {
+    color: var(--secondary-color);
+    font-size: 3vw;
+    font-weight: 500;
+    width: 38vw;
+    text-wrap:wrap;
 }
