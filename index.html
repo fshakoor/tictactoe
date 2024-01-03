@@ -13,11 +13,11 @@
     <div class="form-display">
         <div class="display-text">Welcome to Tic-Tac-Toe. Enter your names and select X or O to begin!</div>
         
-        <form id="myform" onsubmit="return handle_form_submission()">
+        <form id="myform" onsubmit="return formControl.handle_form_submission()">
             <label>
                 Player 1: 
                 <input type="text" id="player1Name" required>
-                <select id="player1Choice" onchange="updatePlayer2Options()" required>
+                <select id="player1Choice" onchange="formControl.updatePlayer2Options()" required>
                     <option value="X">X</option>
                     <option value="O">O</option>
                 </select>
@@ -26,7 +26,7 @@
             <label>
                 Player 2: 
                 <input type="text" id="player2Name" required>
-                <select id="player2Choice" onchange="updatePlayer1Options()" required>
+                <select id="player2Choice" onchange="formControl.updatePlayer1Options()" required>
                     <option value="O">O</option>
                     <option value="X">X</option>
                 </select>
