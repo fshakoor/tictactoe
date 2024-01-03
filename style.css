@@ -29,7 +29,6 @@ html,body {
     cursor: default;
     color: var(--secondary-color);
     font-size: 6vw;
-    cursor: pointer;
 }
 
 .upper-left, .upper-mid, .mid-left, .middle, .bottom-left, .bottom-mid {
@@ -47,7 +46,7 @@ html,body {
     text-wrap:wrap;
 }
 
-.display {
+.form-display {
     display: flex;
     flex-direction: column;
     gap: 35px;

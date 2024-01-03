@@ -18,6 +18,34 @@ function updatePlayer1Options() {
     player1Choice.add(new Option('O', 'O', player2Choice !== 'O'));
 }
 
+let form = document.getElementById("myform");
+let p1Name = document.getElementById("player1Name");
+let p2Name = document.getElementById("player2Name");
+let p1choice = document.getElementById("player1Choice");
+let p2choice = document.getElementById("player2Choice");
+let body = document.querySelector('body');
+let formDisplay = document.querySelector('.form-display');
+
+function handle_form_submission()
+{
+    console.log(p1Name.value)
+    console.log(p1choice.value)
+    console.log(p2Name.value)
+    console.log(p2choice.value)
+
+    body.removeChild(formDisplay)
+    Gameboard.topLeft.style.cursor = 'pointer'
+    Gameboard.topMid.style.cursor = 'pointer'
+    Gameboard.topRight.style.cursor = 'pointer'
+    Gameboard.midLeft.style.cursor = 'pointer'
+    Gameboard.mid.style.cursor = 'pointer'
+    Gameboard.bottomLeft.style.cursor = 'pointer'
+    Gameboard.bottomMid.style.cursor = 'pointer'
+    Gameboard.bottomRight.style.cursor = 'pointer'
+    Gameboard.init();
+    return false;
+}
+
 const Gameboard = {
     gameBoard: [
         ['', '', ''],
@@ -37,6 +65,7 @@ const Gameboard = {
     bottomLeft: document.querySelector('.bottom-left'),
     bottomMid: document.querySelector('.bottom-mid'),
     bottomRight: document.querySelector('.bottom-right'),
+    board: document.querySelector('.gameboard'),
     
     init: function() {
         this.topLeft.addEventListener("click", this.createClickListener(0, 0, this.topLeft));
@@ -117,28 +146,15 @@ const Gameboard = {
     }
 };
 
-Gameboard.init();
+// TODO: On submit, remove the form from the screen
 
-let form = document.getElementById("myform");
-let p1Name = document.getElementById("player1Name");
-let p2Name = document.getElementById("player2Name");
-let p1choice = document.getElementById("player1Choice");
-let p2choice = document.getElementById("player2Choice");
+// TODO: Store form data, make player 1 first
 
-function handle_form_submission()
-{
-  console.log(p1Name.value)
-  console.log(p1choice.value)
-  console.log(p2Name.value)
-  console.log(p2choice.value)
-  return false;
-}
+// TODO: create factory for form handling
 
-// TODO: Show who's move it is
+// TODO: Display who's move it is (name and X/O)
 
 // TODO: Draw line on 3 in a row
-
-// TODO: Clean up the interface to allow players to put in their names
 
 // TODO: include a button to start/restart the game
 
