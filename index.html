@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700;800" rel="stylesheet">
 </head>
 <body>
-    <!-- <div class="form-display">
+    <div class="form-display">
         <div class="display-text">Welcome to Tic-Tac-Toe. Enter your names and select X or O to begin!</div>
         
         <form id="myform" onsubmit="return formControl.handle_form_submission()">
@@ -18,8 +18,8 @@
                 Player 1: 
                 <input type="text" id="player1Name" required>
                 <select id="player1Choice" onchange="formControl.updatePlayer2Options()" required>
-                    <option value="X">X</option>
-                    <option value="O">O</option>
+                    <option>X</option>
+                    <option>O</option>
                 </select>
             </label>
             <br>
@@ -27,15 +27,15 @@
                 Player 2: 
                 <input type="text" id="player2Name" required>
                 <select id="player2Choice" onchange="formControl.updatePlayer1Options()" required>
-                    <option value="O">O</option>
-                    <option value="X">X</option>
+                    <option>O</option>
+                    <option>X</option>
                 </select>
             </label>
             <button class="submit" type="submit" id="submit">Begin</button>
         </form>
-    </div> -->
+    </div>
     <div class="container">
-        <div class="cur-player-text">Player 1's Turn (X)</div>
+        <!-- <div class="cur-player-text">Player 1's Turn (X)</div> -->
         <div class="gameboard">
             <div class="upper-left row-one"></div>
             <div class="upper-mid row-one"></div>

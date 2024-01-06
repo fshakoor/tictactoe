@@ -1,3 +1,49 @@
+const formControl = {
+    form: document.getElementById("myform"),
+    p1Name: document.getElementById("player1Name"),
+    p2Name: document.getElementById("player2Name"),
+    p1choice: document.getElementById("player1Choice"),
+    p2choice: document.getElementById("player2Choice"),
+    body: document.querySelector('body'),
+    formDisplay: document.querySelector('.form-display'),
+
+    updatePlayer2Options: function() {
+        const player1Choice = document.getElementById('player1Choice').value;
+        const player2Choice = document.getElementById('player2Choice');
+        player2Choice.innerHTML = '';
+        player2Choice.add(new Option('X', 'X', player1Choice !== 'X'));
+        player2Choice.add(new Option('O', 'O', player1Choice !== 'O'));
+    },
+    updatePlayer1Options: function() {
+        const player2Choice = document.getElementById('player2Choice').value;
+        const player1Choice = document.getElementById('player1Choice');
+        player1Choice.innerHTML = '';
+        player1Choice.add(new Option('X', 'X', player2Choice !== 'X'));
+        player1Choice.add(new Option('O', 'O', player2Choice !== 'O'));
+    },
+
+    handle_form_submission: function() {
+        console.log(this.p1Name.value)
+        console.log(this.p1choice.value)
+        console.log(this.p2Name.value)
+        console.log(this.p2choice.value)
+
+        Gameboard.curPlayer = this.p1choice.value
+
+        this.body.removeChild(this.formDisplay)
+        Gameboard.topLeft.style.cursor = 'pointer'
+        Gameboard.topMid.style.cursor = 'pointer'
+        Gameboard.topRight.style.cursor = 'pointer'
+        Gameboard.midLeft.style.cursor = 'pointer'
+        Gameboard.mid.style.cursor = 'pointer'
+        Gameboard.bottomLeft.style.cursor = 'pointer'
+        Gameboard.bottomMid.style.cursor = 'pointer'
+        Gameboard.bottomRight.style.cursor = 'pointer'
+        Gameboard.init();
+        return false;
+    }
+}
+
 const Gameboard = {
     gameBoard: [
         ['', '', ''],
@@ -5,7 +51,6 @@ const Gameboard = {
         ['', '', '']
     ],
 
-    curPlayer: 'X',
     gameOver: false,
 
     topLeft: document.querySelector('.upper-left'),
@@ -97,50 +142,6 @@ const Gameboard = {
         if (this.checkFull(this.gameBoard) === true && this.gameOver === false) {console.log('draw')}
     }
 };
-
-const formControl = {
-    form: document.getElementById("myform"),
-    p1Name: document.getElementById("player1Name"),
-    p2Name: document.getElementById("player2Name"),
-    p1choice: document.getElementById("player1Choice"),
-    p2choice: document.getElementById("player2Choice"),
-    body: document.querySelector('body'),
-    formDisplay: document.querySelector('.form-display'),
-
-    updatePlayer2Options: function() {
-        const player1Choice = document.getElementById('player1Choice').value;
-        const player2Choice = document.getElementById('player2Choice');
-        player2Choice.innerHTML = '';
-        player2Choice.add(new Option('X', 'X', player1Choice !== 'X'));
-        player2Choice.add(new Option('O', 'O', player1Choice !== 'O'));
-    },
-    updatePlayer1Options: function() {
-        const player2Choice = document.getElementById('player2Choice').value;
-        const player1Choice = document.getElementById('player1Choice');
-        player1Choice.innerHTML = '';
-        player1Choice.add(new Option('X', 'X', player2Choice !== 'X'));
-        player1Choice.add(new Option('O', 'O', player2Choice !== 'O'));
-    },
-
-    handle_form_submission: function() {
-        console.log(this.p1Name.value)
-        console.log(this.p1choice.value)
-        console.log(this.p2Name.value)
-        console.log(this.p2choice.value)
-
-        this.body.removeChild(this.formDisplay)
-        Gameboard.topLeft.style.cursor = 'pointer'
-        Gameboard.topMid.style.cursor = 'pointer'
-        Gameboard.topRight.style.cursor = 'pointer'
-        Gameboard.midLeft.style.cursor = 'pointer'
-        Gameboard.mid.style.cursor = 'pointer'
-        Gameboard.bottomLeft.style.cursor = 'pointer'
-        Gameboard.bottomMid.style.cursor = 'pointer'
-        Gameboard.bottomRight.style.cursor = 'pointer'
-        Gameboard.init();
-        return false;
-    }
-}
 // TODO: Init curplayer as player 1 (X or O)
 
 // TODO: Display who's move it is (name and X/O)
