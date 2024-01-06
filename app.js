@@ -1,5 +1,6 @@
 const formControl = {
     form: document.getElementById("myform"),
+    curPlayerText: document.querySelector(".cur-player-text"),
     p1Name: document.getElementById("player1Name"),
     p2Name: document.getElementById("player2Name"),
     p1choice: document.getElementById("player1Choice"),
@@ -23,14 +24,10 @@ const formControl = {
     },
 
     handle_form_submission: function() {
-        console.log(this.p1Name.value)
-        console.log(this.p1choice.value)
-        console.log(this.p2Name.value)
-        console.log(this.p2choice.value)
-
         Gameboard.curPlayer = this.p1choice.value
-
         this.body.removeChild(this.formDisplay)
+        this.curPlayerText.innerText = this.p1Name.value + "'s Turn (" + this.p1choice.value + ")"
+
         Gameboard.topLeft.style.cursor = 'pointer'
         Gameboard.topMid.style.cursor = 'pointer'
         Gameboard.topRight.style.cursor = 'pointer'
@@ -142,9 +139,10 @@ const Gameboard = {
         if (this.checkFull(this.gameBoard) === true && this.gameOver === false) {console.log('draw')}
     }
 };
-// TODO: Init curplayer as player 1 (X or O)
 
 // TODO: Display who's move it is (name and X/O)
+
+// TODO: End game when draw or someone wins
 
 // TODO: Draw line on 3 in a row
 
