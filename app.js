@@ -159,36 +159,36 @@ const Gameboard = {
         restartBtn.innerText = 'Restart';
         container.appendChild(restartBtn);
         restartBtn.addEventListener('click', () => {
-            this.gameOver = false;
-            this.gameBoard =  [
-                ['', '', ''],
-                ['', '', ''],
-                ['', '', '']
-            ]
-            this.topLeft.style.cursor = 'pointer'
-            this.topMid.style.cursor = 'pointer'
-            this.topRight.style.cursor = 'pointer'
-            this.midLeft.style.cursor = 'pointer'
-            this.mid.style.cursor = 'pointer'
-            this.bottomLeft.style.cursor = 'pointer'
-            this.bottomMid.style.cursor = 'pointer'
-            this.bottomRight.style.cursor = 'pointer'
-            this.topLeft.innerText = '';
-            this.topMid.innerText = '';
-            this.topRight.innerText = '';
-            this.midLeft.innerText = '';
-            this.mid.innerText = '';
-            this.midRight.innerText = '';
-            this.bottomLeft.innerText = '';
-            this.bottomMid.innerText = '';
-            this.bottomRight.innerText = '';
-            this.curPlayer = (this.curPlayer === 'X') ? 'O' : 'X';
-            formControl.curPlayerText.innerText = (formControl.curPlayerText.innerText === this.p1Text) ? this.p2Text : this.p1Text;
+            this.resetGame();
             container.removeChild(restartBtn);
         })
+    },
+
+    resetGame : function() {
+        this.gameOver = false;
+        this.gameBoard =  [
+            ['', '', ''],
+            ['', '', ''],
+            ['', '', '']
+        ]
+        this.topLeft.style.cursor = 'pointer'
+        this.topMid.style.cursor = 'pointer'
+        this.topRight.style.cursor = 'pointer'
+        this.midLeft.style.cursor = 'pointer'
+        this.mid.style.cursor = 'pointer'
+        this.bottomLeft.style.cursor = 'pointer'
+        this.bottomMid.style.cursor = 'pointer'
+        this.bottomRight.style.cursor = 'pointer'
+        this.topLeft.innerText = '';
+        this.topMid.innerText = '';
+        this.topRight.innerText = '';
+        this.midLeft.innerText = '';
+        this.mid.innerText = '';
+        this.midRight.innerText = '';
+        this.bottomLeft.innerText = '';
+        this.bottomMid.innerText = '';
+        this.bottomRight.innerText = '';
+        this.curPlayer = (this.curPlayer === 'X') ? 'O' : 'X';
+        formControl.curPlayerText.innerText = (formControl.curPlayerText.innerText === this.p1Text) ? this.p2Text : this.p1Text;
     }
 };
-
-// TODO: Draw line on 3 in a row
-
-// TODO: include a button to start/restart the game
