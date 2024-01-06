@@ -76,7 +76,7 @@ const Gameboard = {
 
     createClickListener: function(row, col, element) {
         return () => {
-            if (this.gameBoard[row][col] === '') {
+            if (this.gameBoard[row][col] === '' && this.gameOver !== true) {
                 this.gameBoard[row][col] = this.curPlayer;
                 element.innerHTML = this.curPlayer;
                 element.style.cursor = 'default';
@@ -98,56 +98,52 @@ const Gameboard = {
 
     checkWin: function() {
         if (Gameboard.gameBoard[0][0] == Gameboard.gameBoard[0][1] && Gameboard.gameBoard[0][0] == Gameboard.gameBoard[0][2] && Gameboard.gameBoard[0][0] !== '') {
-            console.log('W');
+            if (Gameboard.gameBoard[0][0] === formControl.p1choice.value) {formControl.curPlayerText.innerText = formControl.p1Name.value + ' Wins!'}
+            else {formControl.curPlayerText.innerText = formControl.p2Name.value + ' Wins!'}
             this.gameOver = true;
-            console.log(this.gameOver)
         }
         if (Gameboard.gameBoard[1][0] == Gameboard.gameBoard[1][1] && Gameboard.gameBoard[1][0] == Gameboard.gameBoard[1][2] && Gameboard.gameBoard[1][0] !== '') {
-            console.log('W');
+            if (Gameboard.gameBoard[1][0] === formControl.p1choice.value) {formControl.curPlayerText.innerText = formControl.p1Name.value + ' Wins!'}
+            else {formControl.curPlayerText.innerText = formControl.p2Name.value + ' Wins!'}
             this.gameOver = true;
-            console.log(this.gameOver)
         }
         if (Gameboard.gameBoard[2][0] == Gameboard.gameBoard[2][1] && Gameboard.gameBoard[2][0] == Gameboard.gameBoard[2][2] && Gameboard.gameBoard[2][0] !== '') {
-            console.log('W');
+            if (Gameboard.gameBoard[2][0] === formControl.p1choice.value) {formControl.curPlayerText.innerText = formControl.p1Name.value + ' Wins!'}
+            else {formControl.curPlayerText.innerText = formControl.p2Name.value + ' Wins!'}
             this.gameOver = true;
-            console.log(this.gameOver)
         }
         if (Gameboard.gameBoard[0][0] == Gameboard.gameBoard[1][0] && Gameboard.gameBoard[0][0] == Gameboard.gameBoard[2][0] && Gameboard.gameBoard[0][0] !== '') {
-            console.log('W');
+            if (Gameboard.gameBoard[1][0] === formControl.p1choice.value) {formControl.curPlayerText.innerText = formControl.p1Name.value + ' Wins!'}
+            else {formControl.curPlayerText.innerText = formControl.p2Name.value + ' Wins!'}
             this.gameOver = true;
-            console.log(this.gameOver)
         }
         if (Gameboard.gameBoard[0][1] == Gameboard.gameBoard[1][1] && Gameboard.gameBoard[0][1] == Gameboard.gameBoard[2][1] && Gameboard.gameBoard[0][1] !== '') {
-            console.log('W');
+            if (Gameboard.gameBoard[0][1] === formControl.p1choice.value) {formControl.curPlayerText.innerText = formControl.p1Name.value + ' Wins!'}
+            else {formControl.curPlayerText.innerText = formControl.p2Name.value + ' Wins!'}
             this.gameOver = true;
-            console.log(this.gameOver)
         }
         if (Gameboard.gameBoard[0][2] == Gameboard.gameBoard[1][2] && Gameboard.gameBoard[0][2] == Gameboard.gameBoard[2][2] && Gameboard.gameBoard[0][2] !== '') {
-            console.log('W');
+            if (Gameboard.gameBoard[0][2] === formControl.p1choice.value) {formControl.curPlayerText.innerText = formControl.p1Name.value + ' Wins!'}
+            else {formControl.curPlayerText.innerText = formControl.p2Name.value + ' Wins!'}
             this.gameOver = true;
-            console.log(this.gameOver)
         }
         if (Gameboard.gameBoard[0][0] == Gameboard.gameBoard[1][1] && Gameboard.gameBoard[0][0] == Gameboard.gameBoard[2][2] && Gameboard.gameBoard[0][0] !== '') {
-            console.log('W');
+            if (Gameboard.gameBoard[1][1] === formControl.p1choice.value) {formControl.curPlayerText.innerText = formControl.p1Name.value + ' Wins!'}
+            else {formControl.curPlayerText.innerText = formControl.p2Name.value + ' Wins!'}
             this.gameOver = true;
-            console.log(this.gameOver)
         }
         if (Gameboard.gameBoard[0][2] == Gameboard.gameBoard[1][1] && Gameboard.gameBoard[0][2] == Gameboard.gameBoard[2][0] && Gameboard.gameBoard[0][2] !== '') {
-            console.log('W');
+            if (Gameboard.gameBoard[0][2] === formControl.p1choice.value) {formControl.curPlayerText.innerText = formControl.p1Name.value + ' Wins!'}
+            else {formControl.curPlayerText.innerText = formControl.p2Name.value + ' Wins!'}
             this.gameOver = true;
-            console.log(this.gameOver)
         }
 
         if (this.checkFull(this.gameBoard) === true && this.gameOver === false) {console.log('draw')}
     }
 };
 
-// TODO: Display who's move it is (name and X/O)
-
-// TODO: End game when draw or someone wins
+// TODO: add a display element that shows the results upon game end!
 
 // TODO: Draw line on 3 in a row
 
 // TODO: include a button to start/restart the game
-
-// TODO: add a display element that shows the results upon game end!
