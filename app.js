@@ -25,9 +25,10 @@ const formControl = {
 
     handle_form_submission: function() {
         Gameboard.curPlayer = this.p1choice.value
+        Gameboard.p1Text = this.p1Name.value + "'s Turn (" + this.p1choice.value + ")"
+        Gameboard.p2Text = this.p2Name.value + "'s Turn (" + this.p2choice.value + ")"
         this.body.removeChild(this.formDisplay)
-        this.curPlayerText.innerText = this.p1Name.value + "'s Turn (" + this.p1choice.value + ")"
-
+        this.curPlayerText.innerText = Gameboard.p1Text
         Gameboard.topLeft.style.cursor = 'pointer'
         Gameboard.topMid.style.cursor = 'pointer'
         Gameboard.topRight.style.cursor = 'pointer'
@@ -80,6 +81,7 @@ const Gameboard = {
                 element.innerHTML = this.curPlayer;
                 element.style.cursor = 'default';
                 this.curPlayer = (this.curPlayer === 'X') ? 'O' : 'X';
+                formControl.curPlayerText.innerText = (formControl.curPlayerText.innerText === this.p1Text) ? this.p2Text : this.p1Text;
                 this.checkWin();
             }
         };
